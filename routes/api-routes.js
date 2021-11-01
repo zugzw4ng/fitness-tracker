@@ -22,3 +22,14 @@ router.get("/api/workouts/range", (req, res) => {
             res.json(err);
         });
 });
+
+router.post("/api/workouts", ({ body }, res) => {
+    db.Workout.create(body)
+      .then(dbWorkout => {
+        console.log(dbWorkout)
+        res.json(dbWorkout);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
