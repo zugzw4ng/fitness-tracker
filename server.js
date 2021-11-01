@@ -3,6 +3,8 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
+const db = require("./models");
+const { application } = require("express");
 const app = express();
 
 app.use(logger("dev"));
@@ -14,3 +16,10 @@ mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/fitnesstracker",
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
   );
+
+app.use(require("./routes/html-routes"));
+app.use(require("./routes/api-routes"));
+
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
+});
