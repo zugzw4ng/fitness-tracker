@@ -47,12 +47,12 @@ router.put("/api/workouts/:id", (req, res) => {
 
 router.delete("/api/workouts", (req, res) => {
     db.Workout.findByIdAndDelete(req.body.id)
-    .then(() => {
-      res.json(true)
-    })
-    .catch (err => {
-      res.json(err);
-    });
-  });
-  
-  module.exports = router;
+        .then(() => {
+            res.json(true)
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
+module.exports = router;
